@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cây Cam Ngọt Của Tôi 🍊</title>
+    <style>
+        /* CSS Trang trí */
+        :root {
+            --primary-color: #ff8a65; /* Màu cam đào */
+            --bg-color: #fff9f0;
+            --text-dark: #4e342e;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .main-card {
+            background: white;
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 1px solid #ffe0b2;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .author {
+            font-style: italic;
+            color: #8d6e63;
+            margin-bottom: 25px;
+        }
+
+        .book-cover {
+            width: 220px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin-bottom: 25px;
+            transition: transform 0.3s;
+        }
+
+        .book-cover:hover {
+            transform: scale(1.05);
+        }
+
+        /* Nút điều khiển âm thanh */
+        .audio-wrapper {
+            background: #fff3e0;
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .btn-audio {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-audio:hover {
+            background: #f4511e;
+        }
+
+        /* Khung Video */
+        .video-box {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 30px 0;
+            background: #000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        .summary {
+            line-height: 1.8;
+            text-align: justify;
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1rem;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: #bcaaa4;
+        }
+
+        /* Hiệu ứng cam rơi nhẹ nhàng */
+        .falling-orange {
+            position: fixed;
+            top: -10%;
+            z-index: 999;
+            user-select: none;
+            cursor: default;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-card">
+        <h1>Cây Cam Ngọt Của Tôi</h1>
+        <div class="author">José Mauro de Vasconcelos</div>
+
+        <img src="bia-sach.jpg" alt="Bìa sách Cây Cam Ngọt Của Tôi" class="book-cover">
+
+        <div class="summary">
+            "Vị ngọt của cam hay chính là vị ngọt của những tâm hồn biết yêu thương nhau?" 
+            Câu chuyện về cậu bé Zeze 5 tuổi đầy nghịch ngợm nhưng cũng đầy tổn thương sẽ khiến bạn không cầm được nước mắt.
+        </div>
+
+        <div class="audio-wrapper">
+            <span id="music-label">🔈 Nhạc đang tắt</span>
+            <button class="btn-audio" onclick="controlAudio()">Nghe Giới Thiệu</button>
+            <audio id="audioSource" loop>
+                <source src="nhac-nen.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <div class="video-box">
+            <video controls poster="https://via.placeholder.com/600x340?text=Trailer+Cây+Cam+Ngọt">
+                <source src="video-gioi-thieu.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <footer>
+            Thiết kế bởi Trương Ngọc Bảo Trân | Lớp 12A2
+        </footer>
+    </div>
+
+    <script>
+        // Xử lý âm thanh
+        const audio = document.getElementById('audioSource');
+        const label = document.getElementById('music-label');
+        let playing = false;
+
+        function controlAudio() {
+            if (playing) {
+                audio.pause();
+                label.innerText = "🔈 Nhạc đang tắt";
+            } else {
+                audio.play();
+                label.innerText = "🔊 Đang phát giới thiệu...";
+            }
+            playing = !playing;
+        }
+
+        // Tạo hiệu ứng cam rơi cho sinh động
+        function createOrange() {
+            const orange = document.createElement('div');
+            orange.innerHTML = '🍊';
+            orange.className = 'falling-orange';
+            orange.style.left = Math.random() * 100 + 'vw';
+            orange.style.animationDuration = Math.random() * 3 + 2 + 's';
+            orange.style.opacity = Math.random();
+            orange.style.fontSize = Math.random() * 10 + 10 + 'px';
+            
+            document.body.appendChild(orange);
+            
+            setTimeout(() => { orange.remove(); }, 5000);
+        }
+        setInterval(createOrange, 500);
+    </script>
+</body>
+</html>
