@@ -1,0 +1,84 @@
+/* style.css */
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    line-height: 1.8; 
+    margin: 0; 
+    padding: 0; 
+    background-color: #fffaf0; /* Màu nền cam pastel dịu */
+    color: #4e342e; 
+}
+
+/* Header rực rỡ */
+header { 
+    background: linear-gradient(135deg, #ffb74d, #ff9800); 
+    color: white; 
+    padding: 4rem 1rem; 
+    text-align: center; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+header h1 { margin: 0; font-size: 2.8rem; letter-spacing: 1px; }
+
+/* Khung nội dung chính */
+.container { 
+    max-width: 900px; 
+    margin: -40px auto 50px; 
+    padding: 30px; 
+    background: white; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Tiêu đề có icon trái cam */
+h2 { 
+    color: #d84315; 
+    border-bottom: 2px dashed #ffb74d; 
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+h2::before {
+    content: "🍊";
+    margin-right: 12px;
+}
+
+/* Các khối nội dung giới thiệu */
+.section-box {
+    background-color: #fff3e0;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border-left: 6px solid #ff9800;
+    transition: 0.3s ease;
+}
+
+.section-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Đa phương tiện */
+.media-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #ffe0b2;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+img, video { 
+    max-width: 100%; 
+    height: auto;
+    border-radius: 10px; 
+}
+
+audio { width: 100%; margin-top: 15px; }
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #8d6e63;
+    font-style: italic;
+}
